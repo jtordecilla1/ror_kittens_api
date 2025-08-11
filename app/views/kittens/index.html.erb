@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+<% content_for :title, "Kittens" %>
+<h1 class="text-center">Kittens</h1>
+<div id="kittens" class="row">
+  <% @kittens.each do |kitten| %>
+    <div class="col-6">
+      <div class="card p-2 gap-2 mt-2">
+        <%= render kitten %>
+        <p>
+          <%= link_to "Show this kitten", kitten, class: "btn btn-outline-primary w-100" %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= link_to "New kitten", new_kitten_path, class: "d-flex justify-content-center mt-4 btn btn-primary" %>

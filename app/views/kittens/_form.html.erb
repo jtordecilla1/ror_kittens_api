@@ -1,0 +1,29 @@
+<%= form_with(model: kitten, class: "p-2") do |form| %>
+  <%= render "shared/errors", obj: kitten %>
+
+  <div>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :age, class: "form-label" %>
+    <%= form.number_field :age, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :cuteness, "Cuteness: ", class: "form-label" %>
+    <span id="cuteness-value" class="small text-muted">5</span>
+    <%= form.range_field :cuteness, in: 1..10, class: "form-range", value: 5, oninput: "document.getElementById('cuteness-value').textContent = this.value" %>
+  </div>
+
+  <div>
+    <%= form.label :softness, "Softness: ", class: "form-label" %>
+    <span id="softness-value" class="small text-muted">5</span>
+    <%= form.range_field :softness, in: 1..10, class: "form-range", value: 5, oninput: "document.getElementById('softness-value').textContent = this.value" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-primary w-100 mt-2" %>
+  </div>
+<% end %>

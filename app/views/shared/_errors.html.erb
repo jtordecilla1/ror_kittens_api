@@ -1,0 +1,11 @@
+<% if obj.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(obj.errors.count, "error") %> prohibited <%= obj.class.to_s %> from being saved:</h2>
+
+      <ul>
+        <% obj.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
