@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Image Gallery</h1>
+    <% if @search_query.present? && @search_query != "kittens,cat,kitten" %>
+      <h5>Search results for: <span class="badge bg-primary"><%= @search_query %></span></h5>
+    <% end %>
+  </div>
+  
+  <% if @photos.present? %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @photos.each do |photo| %>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <% image_url = flickr_image_url(photo) %>
+            <img src="<%= image_url %>" class="card-img-top" alt="<%= photo['title'] %>" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title"><%= photo['title'].present? ? photo['title'] : "Cute Kitten" %></h5>
+              <p class="card-text small text-muted">Photo ID: <%= photo['id'] %></p>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <%= link_to "View Details", search_path(id: photo['id']), class: "btn btn-sm btn-primary" %>
+              <a href="<%= flickr_resource_url(photo) %>" target="_blank" class="btn btn-sm btn-outline-secondary">
+                <i class="bi bi-box-arrow-up-right"></i> Flickr
+              </a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mt-4">
+      <%= custom_paginate(@photos, @per_page, @page, @total_entries) { |page| 
+        search_index_path(page: page, query: @search_query) 
+      } %>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">
+      <p>No photos found. Please try a different search.</p>
+    </div>
+  <% end %>
+</div>

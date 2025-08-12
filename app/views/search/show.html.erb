@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <% if @photo.present? %>
+    <div class="card shadow-lg">
+      <div class="card-header bg-primary text-white d-flex justify-content-between">
+        <h3><%= @photo['title']['_content'] %></h3>
+        <span class="badge bg-light text-primary">ID: <%= @photo['id'] %></span>
+      </div>
+      
+      <div class="text-center p-3">
+        <img 
+          src="<%= flickr_image_url(@photo) %>"
+          alt="<%= @photo['title']['_content'] %>" 
+          class="img-fluid rounded"
+          style="max-height: 500px;"
+        >
+      </div>
+      
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Details</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Owner:</span>
+                <strong><%= @photo['owner']['username'] %></strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Date Taken:</span>
+                <strong><%= @photo['dates']['taken'] %></strong>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Views:</span>
+                <strong><%= @photo['views'] %></strong>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="col-md-6">
+            <h5>Description</h5>
+            <div class="border rounded p-3 bg-light">
+              <% if @photo['description']['_content'].present? %>
+                <%= @photo['description']['_content'] %>
+              <% else %>
+                <em>No description available</em>
+              <% end %>
+            </div>
+            
+            <% if @photo['tags'].present? && @photo['tags']['tag'].present? %>
+                <% @photo['tags']['tag'].each do |tag| %>
+                  <%= link_to tag['raw'], search_index_path(query: tag['raw']), class: "badge bg-secondary text-decoration-none me-1 mb-1" %>
+                <% end %>
+              <% else %>
+                <p class="text-muted">No tags available</p>
+              <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card-footer bg-light d-flex justify-content-between">
+        <%= link_to "Back to Gallery", search_index_path, class: "btn btn-secondary" %>
+        <a href="<%= flickr_resource_url(@photo) %>" target="_blank" class="btn btn-primary">
+          View on Flickr
+        </a>
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-danger">
+      <p>Photo not found or could not be loaded.</p>
+      <%= link_to "Back to Gallery", search_index_path, class: "btn btn-primary mt-2" %>
+    </div>
+  <% end %>
+</div>
