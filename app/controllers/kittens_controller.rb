@@ -1,11 +1,21 @@
 class KittensController < ApplicationController
+
   before_action :set_kitten, only: %i[ show edit update destroy ]
 
   def index
     @kittens = Kitten.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
   end
 
   def new
@@ -52,10 +62,11 @@ class KittensController < ApplicationController
 
   private
     def set_kitten
-      @kitten = Kitten.find(params.expect(:id))
+      @kitten = Kitten.find(params[:id])
     end
 
     def kitten_params
-      params.expect(kitten: [ :name, :age, :cuteness, :softness ])
+      params.require(:kitten).permit(:name, :age, :cuteness, :softness)
     end
+   
 end

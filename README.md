@@ -1,6 +1,6 @@
 # Kittens API
 
-This is a lightweight implementations of rails capacities, it provides a simple model with both html and json request, it offers access to the following routes:
+This is a lightweight implementations of Rails capacities, it provides a simple model with both html and json request, it offers access to the following routes:
 
 | HTTP Verb | Path                | Controller#Action | Description              |
 |-----------|---------------------|-------------------|--------------------------|
@@ -11,6 +11,8 @@ This is a lightweight implementations of rails capacities, it provides a simple 
 | GET       | /kittens/:id/edit   | kittens#edit      | Show form to edit        |
 | PATCH/PUT | /kittens/:id        | kittens#update    | Update a specific kitten |
 | DELETE    | /kittens/:id        | kittens#destroy   | Delete a specific kitten |
+| GET       | /search             | search#index      | List several images from Flikr |
+| GET       | /search:id          | search#show       | Shows an specific Flikr img |
 
 # Requirements 
 
@@ -39,9 +41,13 @@ irb
 require 'rest-client' # If you get an error here, you most likely need to install the gem.
 response = RestClient.get("http://localhost:3000/kittens")
 response.to_s
+response = RestClient.get("http://localhost:3000/search.json?query=cats")
+response.to_s
 
 # JSON response
 
 json_response = RestClient.get("http://localhost:3000/kittens", accept: :json)
+puts json_response.body
+json_response = RestClient.get("http://localhost:3000/search.json?query=cats", accept: :json)
 puts json_response.body
 ```

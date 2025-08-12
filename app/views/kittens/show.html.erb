@@ -3,6 +3,13 @@
     <h5 class="mb-0">Kitten Details</h5>
     <span class="badge bg-light text-primary">ID: <%= @kitten.id %></span>
   </div>
+  
+  <% if @cat_image.present? %>
+    <div class="text-center p-3">
+      <img src="<%= @cat_image %>" alt="<%= @kitten.name %>" class="img-fluid rounded" style="max-height: 300px; object-fit: cover;">
+    </div>
+  <% end %>
+  
   <div class="card-body">
     <%= render @kitten %>
   </div>
