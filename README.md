@@ -81,5 +81,99 @@ puts json_response.body
   
 ![search_show](https://github.com/user-attachments/assets/23a6e0e7-47ae-4262-9123-9bb1e38a38ca)
 
+---
 
 
+---
+
+### Demo JSON responses
+
+#### `/kittens.json`
+```json
+[
+  {
+    "id": 1,
+    "name": "Felix",
+    "age": 5,
+    "cuteness": 9,
+    "softness": 10,
+    "created_at": "2025-08-11T22:20:39.654Z",
+    "updated_at": "2025-08-11T22:20:39.654Z"
+  },
+  {
+    "id": 2,
+    "name": "Tomas",
+    "age": 12,
+    "cuteness": 10,
+    "softness": 10,
+    "created_at": "2025-08-11T22:29:16.457Z",
+    "updated_at": "2025-08-11T22:29:16.457Z"
+  },
+  {
+    "id": 3,
+    "name": "Maurice",
+    "age": 2,
+    "cuteness": 10,
+    "softness": 10,
+    "created_at": "2025-08-11T22:41:56.783Z",
+    "updated_at": "2025-08-11T22:41:56.783Z"
+  },
+  {
+    "id": 4,
+    "name": "Michi",
+    "age": 24,
+    "cuteness": 5,
+    "softness": 5,
+    "created_at": "2025-08-11T22:56:45.229Z",
+    "updated_at": "2025-08-11T22:56:45.229Z"
+  }
+]
+```
+
+#### `/search.json`
+```json
+{
+  "photos": {
+    "page": 1,
+    "pages": 1179,
+    "perpage": 100,
+    "total": 117822,
+    "photo": [
+      {
+        "id": "54717051209",
+        "owner": "62038135@N08",
+        "secret": "e708492dc5",
+        "server": "65535",
+        "farm": 66,
+        "title": "Cinnamoroll at Cinnabon!",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      },
+      {
+        "id": "54715987877",
+        "owner": "192176924@N02",
+        "secret": "e50ec9ab74",
+        "server": "65535",
+        "farm": 66,
+        "title": "DRS 68032 & 68029 5Q86",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      },
+      {
+        "id": "54715982822",
+        "owner": "201801292@N04",
+        "secret": "4a960e8d9d",
+        "server": "65535",
+        "farm": 66,
+        "title": "Cute Cat-Shaped Ceramic Mug with Whiskers and Ears",
+        "ispublic": 1,
+        "isfriend": 0,
+        "isfamily": 0
+      }
+    ]
+  }
+}
+
+```
