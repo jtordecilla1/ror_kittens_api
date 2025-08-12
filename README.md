@@ -51,3 +51,35 @@ puts json_response.body
 json_response = RestClient.get("http://localhost:3000/search.json?query=cats", accept: :json)
 puts json_response.body
 ```
+
+
+# Demo - Views
+
+**kittens/**
+  
+![kittens_index](https://github.com/user-attachments/assets/4232f3ba-5672-4602-bdb4-8158d7685d71)
+
+**kittens/:id**
+  
+![kittens_show](https://github.com/user-attachments/assets/0410c05a-d8d1-41d4-972e-90d8d340e8d7)
+
+**kittens/new**
+  
+![kittens_new](https://github.com/user-attachments/assets/a7a202a8-ab05-4e17-a1ae-1f9c3ee33c14)
+
+**[Creation msg] kittens/**
+  
+![kittens_creation_message](https://github.com/user-attachments/assets/a69fa1b4-ef48-49d8-bdad-1c578bc2605e)
+
+---
+
+**search/**
+  
+![search_view](https://github.com/user-attachments/assets/b74c794f-8e69-4e9c-a0ee-43ad108c0f29)
+
+**search/:id**
+  
+![search_show](https://github.com/user-attachments/assets/23a6e0e7-47ae-4262-9123-9bb1e38a38ca)
+
+
+
